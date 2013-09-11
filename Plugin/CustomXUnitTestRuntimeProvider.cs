@@ -1,7 +1,12 @@
-﻿using TechTalk.SpecFlow;
+﻿using McKeltCustom.SpecflowPlugin;
+using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.UnitTestProvider;
 
-namespace McKeltCustom.Generator.SpecflowPlugin
+
+
+
+namespace McKeltCustom.SpecflowPlugin
 {
     public class CustomXUnitTestRuntimeProvider : IUnitTestRuntimeProvider
     {
@@ -17,7 +22,7 @@ namespace McKeltCustom.Generator.SpecflowPlugin
 
         public void TestIgnore(string message)
         {
-            throw new SpecFlowException("Test ignored: " + message);
+            //throw new SpecFlowException("Test ignored: " + message);
         }
 
         public bool DelayedFixtureTearDown

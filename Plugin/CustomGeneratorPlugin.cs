@@ -1,5 +1,6 @@
 ﻿using BoDi;
-using McKeltCustom.Generator.SpecflowPlugin;
+using McKeltCustom.SpecflowPlugin;
+using TechTalk.SpecFlow.Configuration;
 using TechTalk.SpecFlow.Generator.Configuration;
 using TechTalk.SpecFlow.Generator.Plugins;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
@@ -7,13 +8,27 @@ using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.UnitTestProvider;
 
 [assembly: GeneratorPlugin(typeof(CustomGeneratorPlugin))]
+[assembly: RuntimePlugin(typeof(CustomGeneratorPlugin))]
 
-namespace McKeltCustom.Generator.SpecflowPlugin
+namespace McKeltCustom.SpecflowPlugin
 {
 
-    public class CustomGeneratorPlugin : IGeneratorPlugin
+    public class CustomGeneratorPlugin : IGeneratorPlugin, IRuntimePlugin
     {
         public void RegisterDependencies(ObjectContainer container)
+        {
+
+        }
+
+        public void RegisterCustomizations(ObjectContainer container, RuntimeConfiguration runtimeConfiguration)
+        {
+            container.RegisterTypeAs<CustomGeneratorProvider, IUnitTestGeneratorProvider>();
+            container.RegisterTypeAs<CustomXUnitTestRuntimeProvider, IUnitTestRuntimeProvider>();
+
+
+        }
+
+        public void RegisterConfigurationDefaults(RuntimeConfiguration runtimeConfiguration)
         {
 
         }

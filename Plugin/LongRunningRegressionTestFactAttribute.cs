@@ -7,10 +7,11 @@ using TechTalk.SpecFlow;
 using Xunit;
 using Xunit.Sdk;
 
-namespace McKeltCustom.Generator.SpecflowPlugin
+namespace McKeltCustom.SpecflowPlugin
 {
     public class LongRunningRegressionTestFactAttribute : FactAttribute
     {
+        private static readonly string _logFile = Path.Combine(@"c:\", "test.log");
         public const string LongRunningTest = "LongRunningTest";
         public const string OnlyRunOnBuildServer = "OnlyRunOnBuildServer";
         public const string LongRunningRegressionTest = "LongRunningRegressionTest";
@@ -18,7 +19,14 @@ namespace McKeltCustom.Generator.SpecflowPlugin
 
         public LongRunningRegressionTestFactAttribute()
         {
+#if DEBUG
+            File.Delete(_logFile);
+            File.Create(_logFile);
+
+
             WriteLog("LongRunningRegressionTestFactAttribute Ctor");
+#endif
+
         }
 
         protected override IEnumerable<Xunit.Sdk.ITestCommand> EnumerateTestCommands(Xunit.Sdk.IMethodInfo method)
@@ -55,9 +63,12 @@ namespace McKeltCustom.Generator.SpecflowPlugin
 
         private static void WriteLog(string msg)
         {
+#if DEBUG
             Console.WriteLine(msg);
-            var logFile = Path.Combine(@"c:\", "test.log");
-            File.AppendAllText(logFile, msg + System.Environment.NewLine);
+            Debug.WriteLine(msg);
+           
+            File.AppendAllText(_logFile, msg + System.Environment.NewLine);
+#endif
         }
     }
 }

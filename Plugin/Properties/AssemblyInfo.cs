@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Plugin")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SpecFlow xunit ignore tests through feature tags")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("McKelt.com")]
 [assembly: AssemblyProduct("Plugin")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]

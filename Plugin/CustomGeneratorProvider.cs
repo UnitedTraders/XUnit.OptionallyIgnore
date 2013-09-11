@@ -6,7 +6,7 @@ using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Utils;
 
-namespace McKeltCustom.Generator.SpecflowPlugin
+namespace McKeltCustom.SpecflowPlugin
 {
     /// <summary>
     /// http://blog.jessehouwing.nl/2013/04/creating-custom-unit-test-generator.html
@@ -15,7 +15,7 @@ namespace McKeltCustom.Generator.SpecflowPlugin
     {
         private const string FEATURE_TITLE_PROPERTY_NAME = "FeatureTitle";
         private const string DESCRIPTION_PROPERTY_NAME = "Description";
-        private const string FACT_ATTRIBUTE = "McKeltCustom.Generator.SpecflowPlugin.LongRunningRegressionTestFactAttribute";
+        private const string FACT_ATTRIBUTE = "McKeltCustom.SpecflowPlugin.LongRunningRegressionTestFactAttribute";
         private const string FACT_ATTRIBUTE_SKIP_PROPERTY_NAME = "Skip";
         private const string THEORY_ATTRIBUTE = "Xunit.Extensions.TheoryAttribute";
         private const string INLINEDATA_ATTRIBUTE = "Xunit.Extensions.InlineDataAttribute";

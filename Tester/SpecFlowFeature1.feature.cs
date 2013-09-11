@@ -10,9 +10,6 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-
-using Xunit;
-
 #pragma warning disable
 namespace Tester
 {
@@ -75,7 +72,7 @@ namespace Tester
             this.ScenarioTearDown();
         }
         
-        [Fact()]
+        [McKeltCustom.SpecflowPlugin.LongRunningRegressionTestFactAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
         [Xunit.TraitAttribute("Description", "Long running test should be ignored")]
         public virtual void LongRunningTestShouldBeIgnored()
@@ -96,7 +93,7 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Fact()]
+        [McKeltCustom.SpecflowPlugin.LongRunningRegressionTestFactAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
         [Xunit.TraitAttribute("Description", "Only run this on the build server")]
         public virtual void OnlyRunThisOnTheBuildServer()
@@ -113,7 +110,7 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Fact()]
+        [McKeltCustom.SpecflowPlugin.LongRunningRegressionTestFactAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
         [Xunit.TraitAttribute("Description", "Dont run this locally")]
         public virtual void DontRunThisLocally()
