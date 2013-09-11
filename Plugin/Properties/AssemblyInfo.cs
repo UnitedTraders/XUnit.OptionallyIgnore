@@ -7,11 +7,11 @@ using TechTalk.SpecFlow.Infrastructure;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Plugin")]
-[assembly: AssemblyDescription("SpecFlow xunit ignore tests through feature tags")]
+[assembly: AssemblyTitle("SpecFlow Xunit tags to ignore tests")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("McKelt")]
-[assembly: AssemblyProduct("Plugin")]
+[assembly: AssemblyCompany("mckelt.com")]
+[assembly: AssemblyProduct("McKeltCustom.SpecflowPlugin.Properties")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using TechTalk.SpecFlow.Infrastructure;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("39ca6fb4-8ca3-4a73-94e3-eee217cc6769")]
+[assembly: Guid("df299e37-61c9-4716-8902-f50014897b26")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,12 +31,8 @@ using TechTalk.SpecFlow.Infrastructure;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: GeneratorPlugin(typeof(CustomGeneratorPlugin))]
 [assembly: RuntimePlugin(typeof(CustomGeneratorPlugin))]
-

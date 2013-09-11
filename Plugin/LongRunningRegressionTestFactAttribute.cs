@@ -19,13 +19,7 @@ namespace McKeltCustom.SpecflowPlugin
 
         public LongRunningRegressionTestFactAttribute()
         {
-#if DEBUG
-            //File.Delete(_logFile);
-            //File.Create(_logFile);
-
-
             WriteLog("LongRunningRegressionTestFactAttribute Ctor");
-#endif
 
         }
 
@@ -63,12 +57,10 @@ namespace McKeltCustom.SpecflowPlugin
 
         private static void WriteLog(string msg)
         {
-#if DEBUG
             Console.WriteLine(msg);
             Debug.WriteLine(msg);
            
-            //File.AppendAllText(_logFile, msg + System.Environment.NewLine);
-#endif
+            File.AppendAllText(_logFile, msg + System.Environment.NewLine);
         }
     }
 }
