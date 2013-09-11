@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using McKeltCustom.SpecflowPlugin;
+using TechTalk.SpecFlow.Infrastructure;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -8,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Plugin")]
 [assembly: AssemblyDescription("SpecFlow xunit ignore tests through feature tags")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("McKelt.com")]
+[assembly: AssemblyCompany("McKelt")]
 [assembly: AssemblyProduct("Plugin")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
@@ -34,3 +36,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: GeneratorPlugin(typeof(CustomGeneratorPlugin))]
+[assembly: RuntimePlugin(typeof(CustomGeneratorPlugin))]
+

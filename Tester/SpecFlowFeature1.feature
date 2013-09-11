@@ -19,3 +19,9 @@ Scenario: Only run this on the build server
 Scenario: Dont run this locally
 	Given I am running this locally
 	Then this should be ignored
+
+
+@SomeOtherTag
+Scenario: SomeOtherTag
+	Given I run some other tag
+	Then it should always run the test

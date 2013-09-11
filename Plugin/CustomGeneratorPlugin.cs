@@ -7,8 +7,6 @@ using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.UnitTestProvider;
 
-[assembly: GeneratorPlugin(typeof(CustomGeneratorPlugin))]
-[assembly: RuntimePlugin(typeof(CustomGeneratorPlugin))]
 
 namespace McKeltCustom.SpecflowPlugin
 {
