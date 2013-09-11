@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
     </Compile>
+    <Compile Include="TestFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

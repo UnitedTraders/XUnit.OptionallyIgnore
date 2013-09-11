@@ -10,6 +10,9 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
+
+using Xunit;
+
 #pragma warning disable
 namespace Tester
 {
@@ -34,8 +37,7 @@ namespace Tester
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "In order to avoid silly mistakes\r\nAs a math idiot\r\nI want to be told the sum of t" +
-                    "wo numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "Test ignored tags for xunit", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,44 +75,57 @@ namespace Tester
             this.ScenarioTearDown();
         }
         
-        [McKeltCustom.Generator.SpecflowPlugin.LongRunningRegressionTestFactAttribute()]
+        [Fact()]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
-        [Xunit.TraitAttribute("Description", "Add two numbers")]
-        public virtual void AddTwoNumbers()
+        [Xunit.TraitAttribute("Description", "Long running test should be ignored")]
+        public virtual void LongRunningTestShouldBeIgnored()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Long running test should be ignored", new string[] {
+                        "LongRunningTest"});
+#line 5
 this.ScenarioSetup(scenarioInfo);
+#line 6
+ testRunner.Given("this is a long running test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+ testRunner.And("I only want to run this occassionally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8
- testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I remove the tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
- testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("this test should be ignored", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [McKeltCustom.Generator.SpecflowPlugin.LongRunningRegressionTestFactAttribute()]
+        [Fact()]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
-        [Xunit.TraitAttribute("Description", "asdf ddddddd")]
-        public virtual void AsdfDdddddd()
+        [Xunit.TraitAttribute("Description", "Only run this on the build server")]
+        public virtual void OnlyRunThisOnTheBuildServer()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("asdf ddddddd", new string[] {
-                        "mytag2"});
-#line 17
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Only run this on the build server", new string[] {
+                        "OnlyRunOnBuildServer"});
+#line 13
 this.ScenarioSetup(scenarioInfo);
-#line 18
- testRunner.Given("I have entered 33 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 14
+ testRunner.Given("I only run this on the build server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 15
+ testRunner.Then("it should be ignored locally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Fact()]
+        [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
+        [Xunit.TraitAttribute("Description", "Dont run this locally")]
+        public virtual void DontRunThisLocally()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dont run this locally", new string[] {
+                        "IgnoreLocally"});
 #line 19
- testRunner.And("I have entered 70 into the calculassstor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I am running this locally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 21
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("this should be ignored", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

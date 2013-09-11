@@ -1,21 +1,21 @@
 ﻿Feature: SpecFlowFeature1
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	Test ignored tags for xunit
 
-@mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+@LongRunningTest
+Scenario: Long running test should be ignored
+	Given this is a long running test
+	And I only want to run this occassionally
+	When I remove the tag
+	Then this test should be ignored
 
 
+@OnlyRunOnBuildServer
+Scenario: Only run this on the build server
+	Given I only run this on the build server
+	Then it should be ignored locally
 
 
-@mytag2
-Scenario: asdf ddddddd
-	Given I have entered 33 into the calculator
-	And I have entered 70 into the calculassstor
-	When I press add
-	Then the result should be 120 on the screen
+@IgnoreLocally
+Scenario: Dont run this locally
+	Given I am running this locally
+	Then this should be ignored
