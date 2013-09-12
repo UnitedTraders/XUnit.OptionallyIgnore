@@ -15,7 +15,7 @@ namespace McKeltCustom.SpecflowPlugin
     {
         private const string FEATURE_TITLE_PROPERTY_NAME = "FeatureTitle";
         private const string DESCRIPTION_PROPERTY_NAME = "Description";
-        private const string FACT_ATTRIBUTE = "McKeltCustom.SpecflowPlugin.LongRunningRegressionTestFactAttribute";
+        private const string FACT_ATTRIBUTE = "McKeltCustom.SpecflowPlugin.OptionallyIgnoreTestFactAttribute";
         private const string FACT_ATTRIBUTE_SKIP_PROPERTY_NAME = "Skip";
         private const string THEORY_ATTRIBUTE = "Xunit.Extensions.TheoryAttribute";
         private const string INLINEDATA_ATTRIBUTE = "Xunit.Extensions.InlineDataAttribute";

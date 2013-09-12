@@ -10,7 +10,7 @@ namespace Tester
 {
     public class TestFixture
     {
-        [LongRunningRegressionTestFact]
+        [OptionallyIgnoreTestFact]
         public void DoesThisWork()
         {
             Assert.True(true);
