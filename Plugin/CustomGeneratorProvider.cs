@@ -1,7 +1,9 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Utils;
@@ -69,6 +71,11 @@ namespace McKeltCustom.SpecflowPlugin
             setFixtureMethod.Name = "SetFixture";
             setFixtureMethod.Parameters.Add(new CodeParameterDeclarationExpression(fixtureDataType, "fixtureData"));
             setFixtureMethod.ImplementationTypes.Add(useFixtureType);
+
+
+            var cs = GetStatementCheck();
+            setFixtureMethod.Statements.Add(cs);
+
             generationContext.TestClass.Members.Add(setFixtureMethod);
 
             // public <_currentFixtureTypeDeclaration>() { <fixtureSetupMethod>(); }
@@ -79,6 +86,9 @@ namespace McKeltCustom.SpecflowPlugin
                 new CodeMethodInvokeExpression(
                     new CodeTypeReferenceExpression(new CodeTypeReference(generationContext.TestClass.Name)),
                     generationContext.TestClassInitializeMethod.Name));
+
+            var conditionalStatement = GetStatementCheck();
+            ctorMethod.Statements.Add(conditionalStatement);
         }
 
         public void SetTestClassCleanupMethod(TestClassGenerationContext generationContext)
@@ -108,6 +118,26 @@ namespace McKeltCustom.SpecflowPlugin
 
             SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
             SetDescription(testMethod, scenarioTitle);
+
+            var conditionalStatement = GetStatementCheck();
+            testMethod.Statements.Add(conditionalStatement);
+            generationContext.ScenarioInitializeMethod.Statements.Insert(0,conditionalStatement);
+        }
+
+        private static CodeConditionStatement GetStatementCheck()
+        {
+            CodeSnippetStatement snippet1 = new CodeSnippetStatement();
+            snippet1.Value = "            return;";
+
+            CodeConditionStatement conditionalStatement = new CodeConditionStatement(
+                // The condition to test. 
+                new CodeVariableReferenceExpression("McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally()"),
+                // The statements to execute if the condition evaluates to true. 
+                new CodeStatement[] {new CodeCommentStatement("If condition is true, execute these statements."),},
+                // The statements to execute if the condition evalues to false. 
+                new CodeStatement[]
+                    {new CodeCommentStatement("Else block. If condition is false, execute these statements."), snippet1});
+            return conditionalStatement;
         }
 
         public void SetRowTest(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
@@ -149,10 +179,16 @@ namespace McKeltCustom.SpecflowPlugin
             ctorMethod.Attributes = MemberAttributes.Public;
             generationContext.TestClass.Members.Add(ctorMethod);
 
+            var conditionalStatement = GetStatementCheck();
+            ctorMethod.Statements.Add(conditionalStatement);
+
             ctorMethod.Statements.Add(
                 new CodeMethodInvokeExpression(
                     new CodeThisReferenceExpression(),
                     generationContext.TestInitializeMethod.Name));
+
+            var cs = GetStatementCheck();
+            ctorMethod.Statements.Add(cs);
         }
 
         public void SetTestCleanupMethod(TestClassGenerationContext generationContext)
@@ -177,10 +213,12 @@ namespace McKeltCustom.SpecflowPlugin
         public void SetTestClassIgnore(TestClassGenerationContext generationContext)
         {
             //TODO: how to do class level ignore?
+            generationContext.TestInitializeMethod.Statements.Insert(0, GetStatementCheck());
         }
 
         public void SetTestMethodIgnore(TestClassGenerationContext generationContext, CodeMemberMethod testMethod)
         {
+
             var factAttr = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>()
                 .FirstOrDefault(codeAttributeDeclaration => codeAttributeDeclaration.Name == FACT_ATTRIBUTE);
 
@@ -192,6 +230,8 @@ namespace McKeltCustom.SpecflowPlugin
                         new CodeAttributeArgument(FACT_ATTRIBUTE_SKIP_PROPERTY_NAME, new CodePrimitiveExpression(SKIP_REASON))
                     );
             }
+            
+           
         }
 
         private void SetProperty(CodeTypeMember codeTypeMember, string name, string value)
@@ -209,11 +249,15 @@ namespace McKeltCustom.SpecflowPlugin
         public virtual void FinalizeTestClass(TestClassGenerationContext generationContext)
         {
             // by default, doing nothing to the final generated code
+         
         }
 
         public void SetTestMethodAsRow(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, string exampleSetName, string variantName, IEnumerable<KeyValuePair<string, string>> arguments)
         {
             // doing nothing since we support RowTest
         }
+
+        ~ CustomGeneratorProvider()
+        {}
     }
 }

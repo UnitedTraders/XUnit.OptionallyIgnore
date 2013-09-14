@@ -28,13 +28,32 @@ namespace Tester
         
         public SpecFlowFeature1Feature()
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
             this.TestInitialize();
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
         }
         
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "Test ignored tags for xunit", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "Test ignored tags for xunit", ProgrammingLanguage.CSharp, new string[] {
+                        "IgnoreLocally"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -55,6 +74,42 @@ namespace Tester
         
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
             testRunner.OnScenarioStart(scenarioInfo);
         }
         
@@ -65,6 +120,15 @@ namespace Tester
         
         public virtual void SetFixture(SpecFlowFeature1Feature.FixtureData fixtureData)
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
         }
         
         void System.IDisposable.Dispose()
@@ -77,17 +141,26 @@ namespace Tester
         [Xunit.TraitAttribute("Description", "Long running test should be ignored")]
         public virtual void LongRunningTestShouldBeIgnored()
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Long running test should be ignored", new string[] {
                         "LongRunningTest"});
-#line 5
-this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.Given("this is a long running test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.And("I only want to run this occassionally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("this is a long running test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.When("I remove the tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I only want to run this occassionally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
+ testRunner.When("I remove the tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
  testRunner.Then("this test should be ignored", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -98,13 +171,22 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "Only run this on the build server")]
         public virtual void OnlyRunThisOnTheBuildServer()
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Only run this on the build server", new string[] {
-                        "OnlyRunOnBuildServer"});
-#line 13
-this.ScenarioSetup(scenarioInfo);
+                        "IgnoreLocally"});
 #line 14
- testRunner.Given("I only run this on the build server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 15
+ testRunner.Given("I only run this on the build server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 16
  testRunner.Then("it should be ignored locally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -115,13 +197,22 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "Dont run this locally")]
         public virtual void DontRunThisLocally()
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dont run this locally", new string[] {
                         "IgnoreLocally"});
-#line 19
-this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.Given("I am running this locally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 21
+ testRunner.Given("I am running this locally", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 22
  testRunner.Then("this should be ignored", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -132,13 +223,22 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "SomeOtherTag")]
         public virtual void SomeOtherTag()
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // If condition is true, execute these statements.
+            }
+            else
+            {
+                // Else block. If condition is false, execute these statements.
+            return;
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("SomeOtherTag", new string[] {
                         "SomeOtherTag"});
-#line 25
-this.ScenarioSetup(scenarioInfo);
 #line 26
- testRunner.Given("I run some other tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 27
+ testRunner.Given("I run some other tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 28
  testRunner.Then("it should always run the test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -152,6 +252,15 @@ this.ScenarioSetup(scenarioInfo);
             public FixtureData()
             {
                 SpecFlowFeature1Feature.FeatureSetup();
+                if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+                {
+                    // If condition is true, execute these statements.
+                }
+                else
+                {
+                    // Else block. If condition is false, execute these statements.
+            return;
+                }
             }
             
             void System.IDisposable.Dispose()

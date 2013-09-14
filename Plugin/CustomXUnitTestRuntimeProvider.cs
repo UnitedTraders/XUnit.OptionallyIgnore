@@ -4,8 +4,6 @@ using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.UnitTestProvider;
 
 
-
-
 namespace McKeltCustom.SpecflowPlugin
 {
     public class CustomXUnitTestRuntimeProvider : IUnitTestRuntimeProvider

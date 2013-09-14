@@ -1,4 +1,5 @@
-﻿Feature: SpecFlowFeature1
+﻿@IgnoreLocally
+Feature: SpecFlowFeature1
 	Test ignored tags for xunit
 
 @LongRunningTest
@@ -9,7 +10,7 @@ Scenario: Long running test should be ignored
 	Then this test should be ignored
 
 
-@OnlyRunOnBuildServer
+@IgnoreLocally
 Scenario: Only run this on the build server
 	Given I only run this on the build server
 	Then it should be ignored locally
