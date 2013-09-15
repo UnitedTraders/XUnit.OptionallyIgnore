@@ -88,7 +88,8 @@ namespace Tester
         [Xunit.TraitAttribute("Description", "Add two numbers")]
         public virtual void AddTwoNumbers()
         {
-            McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocally");
+            McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = null;
+            McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocallyxx");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
                 // If condition is true, execute these statements.
@@ -99,7 +100,7 @@ namespace Tester
             return;
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "IgnoreLocally"});
+                        "IgnoreLocallyxx"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9

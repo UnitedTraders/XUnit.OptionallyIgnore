@@ -16,7 +16,7 @@ namespace McKeltCustom.SpecflowPlugin
 
         public static bool ShouldIgnoreLocally()
         {
-
+            
             if (IgnoreLocally.HasValue) return IgnoreLocally.Value;
 
             bool ignore = false;

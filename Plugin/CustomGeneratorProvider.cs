@@ -112,6 +112,8 @@ namespace McKeltCustom.SpecflowPlugin
             SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
             SetDescription(testMethod, scenarioTitle);
 
+            testMethod.Statements.Add(new CodeVariableReferenceExpression("McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = null"));
+
             foreach (var scenario in generationContext.Feature.Scenarios.Where(a=>a.Title == scenarioTitle))
             {
                 foreach (var tag in scenario.Tags)

@@ -114,6 +114,7 @@ namespace Tester
         [Xunit.TraitAttribute("Description", "Long running test should be ignored")]
         public virtual void LongRunningTestShouldBeIgnored()
         {
+            McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = null;
             McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocally");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
@@ -145,6 +146,7 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "Only run this on the build server")]
         public virtual void OnlyRunThisOnTheBuildServer()
         {
+            McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = null;
             McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocally");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
@@ -172,6 +174,7 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "Dont run this locally")]
         public virtual void DontRunThisLocally()
         {
+            McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = null;
             McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocally");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
@@ -199,6 +202,7 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "SomeOtherTag")]
         public virtual void SomeOtherTag()
         {
+            McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = null;
             McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("SomeOtherTag");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
