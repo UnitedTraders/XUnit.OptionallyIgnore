@@ -1,8 +1,8 @@
-﻿@IgnoreLocally
+﻿@IgnoreLocallyxxx
 Feature: SpecFlowFeature1
 	Test ignored tags for xunit
 
-@LongRunningTest
+@IgnoreLocally
 Scenario: Long running test should be ignored
 	Given this is a long running test
 	And I only want to run this occassionally

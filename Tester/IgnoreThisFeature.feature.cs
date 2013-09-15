@@ -28,25 +28,7 @@ namespace Tester
         
         public IgnoreThisFeatureFeature()
         {
-            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
-            {
-                // If condition is true, execute these statements.
-            }
-            else
-            {
-                // Else block. If condition is false, execute these statements.
-            return;
-            }
             this.TestInitialize();
-            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
-            {
-                // If condition is true, execute these statements.
-            }
-            else
-            {
-                // Else block. If condition is false, execute these statements.
-            return;
-            }
         }
         
         public static void FeatureSetup()
@@ -75,6 +57,7 @@ namespace Tester
         
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
+            testRunner.OnScenarioStart(scenarioInfo);
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
                 // If condition is true, execute these statements.
@@ -84,7 +67,6 @@ namespace Tester
                 // Else block. If condition is false, execute these statements.
             return;
             }
-            testRunner.OnScenarioStart(scenarioInfo);
         }
         
         public virtual void ScenarioCleanup()
@@ -94,15 +76,6 @@ namespace Tester
         
         public virtual void SetFixture(IgnoreThisFeatureFeature.FixtureData fixtureData)
         {
-            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
-            {
-                // If condition is true, execute these statements.
-            }
-            else
-            {
-                // Else block. If condition is false, execute these statements.
-            return;
-            }
         }
         
         void System.IDisposable.Dispose()
@@ -115,6 +88,7 @@ namespace Tester
         [Xunit.TraitAttribute("Description", "Add two numbers")]
         public virtual void AddTwoNumbers()
         {
+            McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocally");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
                 // If condition is true, execute these statements.
@@ -148,15 +122,6 @@ this.ScenarioSetup(scenarioInfo);
             public FixtureData()
             {
                 IgnoreThisFeatureFeature.FeatureSetup();
-                if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
-                {
-                    // If condition is true, execute these statements.
-                }
-                else
-                {
-                    // Else block. If condition is false, execute these statements.
-            return;
-                }
             }
             
             void System.IDisposable.Dispose()

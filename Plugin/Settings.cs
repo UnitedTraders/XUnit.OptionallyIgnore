@@ -33,6 +33,7 @@ namespace McKeltCustom.SpecflowPlugin
                 }
             }
 
+
             if (FeatureContext.Current != null)
             {
                 if (FeatureContext.Current.FeatureInfo != null)
@@ -46,6 +47,16 @@ namespace McKeltCustom.SpecflowPlugin
             }
 
             return true;
+        }
+
+
+        public static void ShouldTestRun(string tagToIgnore)
+        {
+            if (tagToIgnore.ToLower() == IgnoreLocallyTag.ToLower())
+            {
+                IgnoreLocally = false;
+            }
+
         }
     }
 }

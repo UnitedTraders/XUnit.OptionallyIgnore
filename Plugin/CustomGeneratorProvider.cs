@@ -72,10 +72,6 @@ namespace McKeltCustom.SpecflowPlugin
             setFixtureMethod.Parameters.Add(new CodeParameterDeclarationExpression(fixtureDataType, "fixtureData"));
             setFixtureMethod.ImplementationTypes.Add(useFixtureType);
 
-
-            var cs = GetStatementCheck();
-            setFixtureMethod.Statements.Add(cs);
-
             generationContext.TestClass.Members.Add(setFixtureMethod);
 
             // public <_currentFixtureTypeDeclaration>() { <fixtureSetupMethod>(); }
@@ -86,9 +82,6 @@ namespace McKeltCustom.SpecflowPlugin
                 new CodeMethodInvokeExpression(
                     new CodeTypeReferenceExpression(new CodeTypeReference(generationContext.TestClass.Name)),
                     generationContext.TestClassInitializeMethod.Name));
-
-            var conditionalStatement = GetStatementCheck();
-            ctorMethod.Statements.Add(conditionalStatement);
         }
 
         public void SetTestClassCleanupMethod(TestClassGenerationContext generationContext)
@@ -119,9 +112,17 @@ namespace McKeltCustom.SpecflowPlugin
             SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
             SetDescription(testMethod, scenarioTitle);
 
+            foreach (var scenario in generationContext.Feature.Scenarios.Where(a=>a.Title == scenarioTitle))
+            {
+                foreach (var tag in scenario.Tags)
+                {
+                     testMethod.Statements.Add(CheckIgnoreTag(Convert.ToChar(34) + tag.Name + Convert.ToChar(34) ));
+                }
+            }
+
             var conditionalStatement = GetStatementCheck();
             testMethod.Statements.Add(conditionalStatement);
-            generationContext.ScenarioInitializeMethod.Statements.Insert(0,conditionalStatement);
+            generationContext.ScenarioInitializeMethod.Statements.Add(conditionalStatement);
         }
 
         private static CodeConditionStatement GetStatementCheck()
@@ -129,7 +130,7 @@ namespace McKeltCustom.SpecflowPlugin
             CodeSnippetStatement snippet1 = new CodeSnippetStatement();
             snippet1.Value = "            return;";
 
-            CodeConditionStatement conditionalStatement = new CodeConditionStatement(
+            var conditionalStatement = new CodeConditionStatement(
                 // The condition to test. 
                 new CodeVariableReferenceExpression("McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally()"),
                 // The statements to execute if the condition evaluates to true. 
@@ -179,16 +180,11 @@ namespace McKeltCustom.SpecflowPlugin
             ctorMethod.Attributes = MemberAttributes.Public;
             generationContext.TestClass.Members.Add(ctorMethod);
 
-            var conditionalStatement = GetStatementCheck();
-            ctorMethod.Statements.Add(conditionalStatement);
-
             ctorMethod.Statements.Add(
                 new CodeMethodInvokeExpression(
                     new CodeThisReferenceExpression(),
                     generationContext.TestInitializeMethod.Name));
 
-            var cs = GetStatementCheck();
-            ctorMethod.Statements.Add(cs);
         }
 
         public void SetTestCleanupMethod(TestClassGenerationContext generationContext)
@@ -213,7 +209,7 @@ namespace McKeltCustom.SpecflowPlugin
         public void SetTestClassIgnore(TestClassGenerationContext generationContext)
         {
             //TODO: how to do class level ignore?
-            generationContext.TestInitializeMethod.Statements.Insert(0, GetStatementCheck());
+ 
         }
 
         public void SetTestMethodIgnore(TestClassGenerationContext generationContext, CodeMemberMethod testMethod)
@@ -248,8 +244,15 @@ namespace McKeltCustom.SpecflowPlugin
 
         public virtual void FinalizeTestClass(TestClassGenerationContext generationContext)
         {
-            // by default, doing nothing to the final generated code
-         
+
+          
+
+        }
+
+        private CodeExpression CheckIgnoreTag(string fieldName)
+        {
+            var invocation = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(Settings)), "ShouldTestRun"), new CodeFieldReferenceExpression() { FieldName = fieldName});
+            return invocation;
         }
 
         public void SetTestMethodAsRow(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, string exampleSetName, string variantName, IEnumerable<KeyValuePair<string, string>> arguments)
