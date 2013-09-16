@@ -52,6 +52,8 @@ namespace McKeltCustom.SpecflowPlugin
 
         public static void ShouldTestRun(string tagToIgnore)
         {
+            if (string.IsNullOrEmpty(tagToIgnore)) return;
+
             if (tagToIgnore.ToLower() == IgnoreLocallyTag.ToLower())
             {
                 IgnoreLocally = false;

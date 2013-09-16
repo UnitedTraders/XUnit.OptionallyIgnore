@@ -45,6 +45,7 @@ namespace McKeltCustom.SpecflowPlugin
         public void SetTestClassCategories(TestClassGenerationContext generationContext, IEnumerable<string> featureCategories)
         {
             // xUnit does not support caregories
+           
         }
 
         public void SetTestClassInitializeMethod(TestClassGenerationContext generationContext)
@@ -124,22 +125,23 @@ namespace McKeltCustom.SpecflowPlugin
 
             var conditionalStatement = GetStatementCheck();
             testMethod.Statements.Add(conditionalStatement);
-            generationContext.ScenarioInitializeMethod.Statements.Add(conditionalStatement);
+            generationContext.ScenarioInitializeMethod.Statements.Insert(0,conditionalStatement);
+            generationContext.ScenarioCleanupMethod.Statements.Insert(0, conditionalStatement);
+            generationContext.TestCleanupMethod.Statements.Insert(0, conditionalStatement);
         }
 
         private static CodeConditionStatement GetStatementCheck()
         {
             CodeSnippetStatement snippet1 = new CodeSnippetStatement();
-            snippet1.Value = "            return;";
+            snippet1.Value = "return;";
 
             var conditionalStatement = new CodeConditionStatement(
                 // The condition to test. 
                 new CodeVariableReferenceExpression("McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally()"),
                 // The statements to execute if the condition evaluates to true. 
-                new CodeStatement[] {new CodeCommentStatement("If condition is true, execute these statements."),},
+                new CodeStatement[] { new CodeCommentStatement("https://github.com/chrismckelt/SpecFlowCustomPlugin"), },
                 // The statements to execute if the condition evalues to false. 
-                new CodeStatement[]
-                    {new CodeCommentStatement("Else block. If condition is false, execute these statements."), snippet1});
+                new CodeStatement[] { new CodeCommentStatement("https://github.com/chrismckelt/SpecFlowCustomPlugin"), snippet1 });
             return conditionalStatement;
         }
 
@@ -247,7 +249,8 @@ namespace McKeltCustom.SpecflowPlugin
         public virtual void FinalizeTestClass(TestClassGenerationContext generationContext)
         {
 
-          
+            CodeDomHelper.AddCommentStatement(generationContext.TestClassInitializeMethod.Statements, "More info on this add-in available at");
+            CodeDomHelper.AddCommentStatement(generationContext.TestClassInitializeMethod.Statements, "https://github.com/chrismckelt/SpecFlowCustomPlugin");
 
         }
 

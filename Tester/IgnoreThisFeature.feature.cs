@@ -38,6 +38,8 @@ namespace Tester
                     "wo numbers", ProgrammingLanguage.CSharp, new string[] {
                         "IgnoreLocally"});
             testRunner.OnFeatureStart(featureInfo);
+//More info on this add-in available at
+//https://github.com/chrismckelt/SpecFlowCustomPlugin
         }
         
         public static void FeatureTearDown()
@@ -57,20 +59,29 @@ namespace Tester
         
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
-            testRunner.OnScenarioStart(scenarioInfo);
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
-                // If condition is true, execute these statements.
+                // https://github.com/chrismckelt/SpecFlowCustomPlugin
             }
             else
             {
-                // Else block. If condition is false, execute these statements.
-            return;
+                // https://github.com/chrismckelt/SpecFlowCustomPlugin
+return;
             }
+            testRunner.OnScenarioStart(scenarioInfo);
         }
         
         public virtual void ScenarioCleanup()
         {
+            if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
+            {
+                // https://github.com/chrismckelt/SpecFlowCustomPlugin
+            }
+            else
+            {
+                // https://github.com/chrismckelt/SpecFlowCustomPlugin
+return;
+            }
             testRunner.CollectScenarioErrors();
         }
         
@@ -92,12 +103,12 @@ namespace Tester
             McKeltCustom.SpecflowPlugin.Settings.ShouldTestRun("IgnoreLocallyxx");
             if (McKeltCustom.SpecflowPlugin.Settings.ShouldIgnoreLocally())
             {
-                // If condition is true, execute these statements.
+                // https://github.com/chrismckelt/SpecFlowCustomPlugin
             }
             else
             {
-                // Else block. If condition is false, execute these statements.
-            return;
+                // https://github.com/chrismckelt/SpecFlowCustomPlugin
+return;
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
                         "IgnoreLocallyxx"});
