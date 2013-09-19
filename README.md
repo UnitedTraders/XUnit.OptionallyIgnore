@@ -26,7 +26,7 @@ namespace Tester
         [OptionallyIgnoreTestFact]
         public void DoesThisWork()
         {
-            Assert.True(false);
+             Assert.True(false, "This should not be run");
         }
 
 
