@@ -18,6 +18,9 @@ namespace McKeltCustom.SpecflowPlugin
         {
             WriteLog("OptionallyIgnoreTestFactAttribute Ctor");
 
+            if (McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally.HasValue &&
+                McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally == true)
+                this.Skip = "Test Ignored at runtime";
         }
 
         protected override IEnumerable<Xunit.Sdk.ITestCommand> EnumerateTestCommands(Xunit.Sdk.IMethodInfo method)

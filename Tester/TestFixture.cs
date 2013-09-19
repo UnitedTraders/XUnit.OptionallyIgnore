@@ -8,12 +8,26 @@ using Xunit;
 
 namespace Tester
 {
-    public class TestFixture
+    public class Dummy
+    {
+        public Dummy()
+        {
+            McKeltCustom.SpecflowPlugin.Settings.IgnoreLocally = true;
+        }
+    }
+
+
+    public class TestFixture : IUseFixture<Dummy>
     {
         [OptionallyIgnoreTestFact]
         public void DoesThisWork()
         {
-            Assert.True(true);
+            Assert.True(false, "This should not be run");
+        }
+
+        public void SetFixture(Dummy data)
+        {
+            throw new NotImplementedException();
         }
     }
 }
