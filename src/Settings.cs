@@ -10,8 +10,8 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
 
         public static bool ShouldOptionallyIgnore()
         {
-            
-            if (OptionallyIgnore.HasValue) return OptionallyIgnore.Value;
+
+            if (OptionallyIgnore.HasValue && OptionallyIgnore.Value) return OptionallyIgnore.Value;
 
             bool ignore = false;
 
