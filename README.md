@@ -49,7 +49,7 @@ namespace XUnit.OptionallyIgnore.Tester
 
         public void SetFixture(Dummy data)
         {
-            throw new NotImplementedException();
+            Settings.OptionallyIgnore = true;
         }
     }
 }
