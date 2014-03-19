@@ -21,11 +21,9 @@ Use Cases include: long running tests that should only run on the build.
 Sample usage:
 
  
-
+```
 using System;
-
 using Xunit;
-
 using XUnit.OptionallyIgnore.SpecFlowPlugin;
 
 namespace XUnit.OptionallyIgnore.Tester
@@ -53,5 +51,5 @@ namespace XUnit.OptionallyIgnore.Tester
         }
     }
 }
- 
+ ```
 
