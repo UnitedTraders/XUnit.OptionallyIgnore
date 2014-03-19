@@ -1,10 +1,12 @@
-XUnit Ignore test at runtime
+XUnit Ignore test at runtime  - instead of [Fact] use
 ```
-XUnit - [OptionallyIgnoreTestFact]
+[OptionallyIgnoreTestFact]
 ```
 
-SpecFlow tag @OptionallyIgnore
-
+For SpecFlow use the tag 
+```
+@OptionallyIgnore
+```
 
 As Xunit has no Assert.Ignore() using the above attribute/tag and setting the following flag will ignore tests at runtime
 
