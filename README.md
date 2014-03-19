@@ -11,7 +11,7 @@ For SpecFlow use the tag
 As Xunit has no Assert.Ignore() using the above attribute/tag and setting the following flag will ignore tests at runtime
 
 ```
-XUnit.OptionallyIgnore.SpecFlowPlugin.Settings.IgnoreLocally == true  // or IsBuildServer();
+XUnit.OptionallyIgnore.SpecFlowPlugin.Settings.IgnoreLocally = true  // or IsBuildServer();
 ```
  
 https://github.com/chrismckelt/XUnit.OptionallyIgnore
