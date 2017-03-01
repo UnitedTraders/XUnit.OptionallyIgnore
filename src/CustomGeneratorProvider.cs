@@ -18,6 +18,9 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
     {
         private const string FeatureTitlePropertyName = "FeatureTitle";
         private const string DescriptionPropertyName = "Description";
+        private const string IgnoreTagName = "OptionallyIgnore";
+        private const string DisposeMethodName = "Dispose";
+        private const string SetFixtureMethodName = "SetFixture";
 
         private readonly string ignorableFactAttribute = typeof (OptionallyIgnoreTestFactAttribute).FullName;
         private readonly string factAttribute = typeof (FactAttribute).FullName;
@@ -69,7 +72,7 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
             CodeMemberMethod setFixtureMethod = new CodeMemberMethod
             {
                 Attributes = MemberAttributes.Public,
-                Name = "SetFixture"
+                Name = SetFixtureMethodName
             };
             setFixtureMethod.Parameters.Add(new CodeParameterDeclarationExpression(fixtureDataType, "fixtureData"));
             setFixtureMethod.ImplementationTypes.Add(useFixtureType);
@@ -100,7 +103,7 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
             CodeMemberMethod disposeMethod = new CodeMemberMethod
             {
                 PrivateImplementationType = new CodeTypeReference(typeof (IDisposable)),
-                Name = "Dispose"
+                Name = DisposeMethodName
             };
 
             currentFixtureDataTypeDeclaration.Members.Add(disposeMethod);
@@ -116,7 +119,9 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
             SetProperty(testMethod, FeatureTitlePropertyName, generationContext.Feature.Title);
             SetDescription(testMethod, scenarioTitle);
 
-            foreach (Scenario scenario in generationContext.Feature.Scenarios.Where(a=>a.Title == scenarioTitle))
+            bool isOptionallyIgnoreTagAdded = false;
+
+            foreach (Scenario scenario in generationContext.Feature.Scenarios.Where(a => a.Title == scenarioTitle))
             {
                 if (scenario.Tags == null)
                 {
@@ -126,14 +131,16 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
 
                 foreach (Tag tag in scenario.Tags)
                 {
-                    if (tag.Name == "OptionallyIgnore")
+                    if (String.Equals(tag.Name, IgnoreTagName, StringComparison.CurrentCultureIgnoreCase))
                     {
                         CodeDomHelper.AddAttribute(testMethod, ignorableFactAttribute);
+                        isOptionallyIgnoreTagAdded = true;
                     }
-                    else
-                    {
-                        CodeDomHelper.AddAttribute(testMethod, factAttribute);
-                    }
+                }
+
+                if (!isOptionallyIgnoreTagAdded)
+                {
+                    CodeDomHelper.AddAttribute(testMethod, factAttribute);
                 }
             }
         }
@@ -196,7 +203,7 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
             CodeMemberMethod disposeMethod = new CodeMemberMethod
             {
                 PrivateImplementationType = new CodeTypeReference(typeof (IDisposable)),
-                Name = "Dispose"
+                Name = DisposeMethodName
             };
 
             generationContext.TestClass.Members.Add(disposeMethod);

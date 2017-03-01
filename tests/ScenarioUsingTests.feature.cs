@@ -86,6 +86,19 @@ namespace XUnit.OptionallyIgnore.Tester
         }
         
         [Xunit.TraitAttribute("FeatureTitle", "StepConditionalIgnore")]
+        [Xunit.TraitAttribute("Description", "This test also will be ignored beacuse tag using is case insensitive")]
+        [XUnit.OptionallyIgnore.SpecFlowPlugin.OptionallyIgnoreTestFactAttribute()]
+        public virtual void ThisTestAlsoWillBeIgnoredBeacuseTagUsingIsCaseInsensitive()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This test also will be ignored beacuse tag using is case insensitive", new string[] {
+                        "optionallyignore"});
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("Some conditions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            testRunner.Then("Tests ignored because of AssertExtension.Skip", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TraitAttribute("FeatureTitle", "StepConditionalIgnore")]
         [Xunit.TraitAttribute("Description", "Test success")]
         [XUnit.OptionallyIgnore.SpecFlowPlugin.OptionallyIgnoreTestFactAttribute()]
         public virtual void TestSuccess()
@@ -129,6 +142,20 @@ namespace XUnit.OptionallyIgnore.Tester
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This tests will fails because of mistake in tag name", new string[] {
                         "OpitionallyInoredddddddd"});
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given("Some conditions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            testRunner.Then("Tests ignored because of AssertExtension.Skip", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TraitAttribute("FeatureTitle", "StepConditionalIgnore")]
+        [Xunit.TraitAttribute("Description", "This test must be ignored correctly even with two tags")]
+        [XUnit.OptionallyIgnore.SpecFlowPlugin.OptionallyIgnoreTestFactAttribute()]
+        public virtual void ThisTestMustBeIgnoredCorrectlyEvenWithTwoTags()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This test must be ignored correctly even with two tags", new string[] {
+                        "SomeOtherTag",
+                        "OptionallyIgnore"});
             this.ScenarioSetup(scenarioInfo);
             testRunner.Given("Some conditions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
             testRunner.Then("Tests ignored because of AssertExtension.Skip", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
