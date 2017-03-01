@@ -56,33 +56,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IgnoreThisFeature.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IgnoreThisFeature.feature</DependentUpon>
-    </Compile>
-    <Compile Include="IgnoreThisFeatureFlow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecFlowFeature1.feature.cs">
+    <Compile Include="FeatureUsingTests.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+      <DependentUpon>FeatureUsingTests.feature</DependentUpon>
     </Compile>
-    <Compile Include="SpecFlowFeature1Flow.cs" />
-    <Compile Include="TestFixture.cs" />
+    <Compile Include="ScenarioUsingTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScenarioUsingTests.feature</DependentUpon>
+    </Compile>
+    <Compile Include="StepConditionalIgnoreFlow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="IgnoreThisFeature.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>IgnoreThisFeature.feature.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
-    <None Include="SpecFlowFeature1.feature">
+    <None Include="FeatureUsingTests.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+      <LastGenOutput>FeatureUsingTests.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ScenarioUsingTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ScenarioUsingTests.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

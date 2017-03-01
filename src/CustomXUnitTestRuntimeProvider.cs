@@ -17,7 +17,7 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
 
         public void TestIgnore(string message)
         {
-            //throw new SpecFlowException("Test ignored: " + message);
+            throw new SpecFlowException("Test ignored: " + message);
         }
 
         public bool DelayedFixtureTearDown

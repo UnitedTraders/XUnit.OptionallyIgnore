@@ -8,25 +8,20 @@ using TechTalk.SpecFlow.UnitTestProvider;
 
 namespace XUnit.OptionallyIgnore.SpecFlowPlugin
 {
-
     public class CustomGeneratorPlugin : IGeneratorPlugin, IRuntimePlugin
     {
         public void RegisterDependencies(ObjectContainer container)
         {
-
         }
 
         public void RegisterCustomizations(ObjectContainer container, RuntimeConfiguration runtimeConfiguration)
         {
             container.RegisterTypeAs<CustomGeneratorProvider, IUnitTestGeneratorProvider>();
             container.RegisterTypeAs<CustomXUnitTestRuntimeProvider, IUnitTestRuntimeProvider>();
-
-
         }
 
         public void RegisterConfigurationDefaults(RuntimeConfiguration runtimeConfiguration)
         {
-
         }
 
         public void RegisterCustomizations(ObjectContainer container, SpecFlowProjectConfiguration generatorConfiguration)
@@ -37,7 +32,6 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
 
         public void RegisterConfigurationDefaults(SpecFlowProjectConfiguration specFlowConfiguration)
         {
-
         }
     }
 }
