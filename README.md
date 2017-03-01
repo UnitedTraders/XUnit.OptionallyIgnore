@@ -10,47 +10,63 @@ For SpecFlow use the tag
 
 As Xunit has no Assert.Ignore() using the above attribute/tag and setting the following flag will ignore tests at runtime
 
+Sample usage inf simple xUnit tests:
 ```
-XUnit.OptionallyIgnore.SpecFlowPlugin.Settings.IgnoreLocally = true  // or IsBuildServer();
-```
- 
-https://github.com/chrismckelt/XUnit.OptionallyIgnore
+using XUnit.OptionallyIgnore.SpecFlowPlugin;
 
+namespace XUnit.OptionallyIgnore.Tester
+{
+    public class SampleIgnoreTest
+    {
+        [OptionallyIgnoreTestFact]
+        public void SampleTest()
+        {
+            AssertExtension.Skip("Some ignore reason");
+        }
+    }
+}
+
+```
+
+This project based on this OptionallyIgnore https://github.com/chrismckelt/XUnit.OptionallyIgnore but has different behaviour 
 
 Use Cases include: long running tests that should only run on the build.
 
- 
 
-Sample usage:
+Sample usage in SpecFlow:
 
- 
+SpecFlow Scenario:
 ```
-using System;
+Feature: StepConditionalIgnore
+	In order to avoid odd behaviour of OptionallyIgnore tag
+	As a simple tag user
+	I want check that methods without OptionallyIgnore tag fails when exception occurs
+ 
+@OptionallyIgnore
+Scenario: Ignore tests with AssertExtension.Skip and OptionallyIgnore tag
+	Given Some conditions
+	Then Tests ignored because of AssertExtension.Skip
+ ```
+ Steps realisation:
+ ```
+using TechTalk.SpecFlow;
 using Xunit;
 using XUnit.OptionallyIgnore.SpecFlowPlugin;
 
 namespace XUnit.OptionallyIgnore.Tester
 {
-    public class Dummy
+    [Binding]
+    public class ConditionalIgnoreFlowSteps
     {
-        public Dummy()
+        [Given(@"Some conditions")]
+        public void GivenSomeConditions()
         {
-            Settings.OptionallyIgnore = true;
-        }
-    }
-
-
-    public class TestFixture : IUseFixture<Dummy>
-    {
-        [OptionallyIgnoreTestFact]
-        public void DoesThisWork()
-        {
-            Assert.True(false, "This should not be run");
         }
 
-        public void SetFixture(Dummy data)
+        [Then(@"Tests ignored because of AssertExtension.Skip")]
+        public void ThenTestsIgnored()
         {
-            Settings.OptionallyIgnore = true;
+            AssertExtension.Skip("We want to skip it right now!");
         }
     }
 }
