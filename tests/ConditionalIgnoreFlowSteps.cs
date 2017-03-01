@@ -5,7 +5,7 @@ using XUnit.OptionallyIgnore.SpecFlowPlugin;
 namespace XUnit.OptionallyIgnore.Tester
 {
     [Binding]
-    public class StepConditionalIgnoreFlow
+    public class ConditionalIgnoreFlowSteps
     {
         [Given(@"Some conditions")]
         public void GivenSomeConditions()

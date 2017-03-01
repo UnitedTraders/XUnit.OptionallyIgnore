@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SimpleUnitTestCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FeatureUsingTests.feature.cs">
       <AutoGen>True</AutoGen>
@@ -67,7 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ScenarioUsingTests.feature</DependentUpon>
     </Compile>
-    <Compile Include="StepConditionalIgnoreFlow.cs" />
+    <Compile Include="ConditionalIgnoreFlowSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
