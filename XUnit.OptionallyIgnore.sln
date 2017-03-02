@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnit.OptionallyIgnore", "src\XUnit.OptionallyIgnore.csproj", "{AB6E878C-7D19-498C-BD01-9DFCBA5F842D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xunit.SpecFlow.AssertSkip", "src\Xunit.SpecFlow.AssertSkip.csproj", "{AB6E878C-7D19-498C-BD01-9DFCBA5F842D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnit.OptionallyIgnore.Tester", "tests\XUnit.OptionallyIgnore.Tester.csproj", "{183D0B15-B14B-44D8-A9A6-15C9BF1343BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xunit.SpecFlow.AssertSkip.Tester", "tests\Xunit.SpecFlow.AssertSkip.Tester.csproj", "{183D0B15-B14B-44D8-A9A6-15C9BF1343BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

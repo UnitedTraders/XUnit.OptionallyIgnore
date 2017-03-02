@@ -7,7 +7,7 @@
     <ProjectGuid>{AB6E878C-7D19-498C-BD01-9DFCBA5F842D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XUnit.OptionallyIgnore.SpecFlowPlugin</RootNamespace>
+    <RootNamespace>Xunit.SpecFlow.AssertSkip</RootNamespace>
     <AssemblyName>XUnit.OptionallyIgnore.SpecFlowPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

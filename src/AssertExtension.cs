@@ -1,4 +1,4 @@
-﻿namespace XUnit.OptionallyIgnore.SpecFlowPlugin
+﻿namespace Xunit.SpecFlow.AssertSkip
 {
     public static class AssertExtension
     {

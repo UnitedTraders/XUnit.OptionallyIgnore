@@ -6,10 +6,9 @@ using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Parser.SyntaxElements;
 using TechTalk.SpecFlow.Utils;
-using Xunit;
 using Xunit.Extensions;
 
-namespace XUnit.OptionallyIgnore.SpecFlowPlugin
+namespace Xunit.SpecFlow.AssertSkip
 {
     /// <summary>
     /// http://blog.jessehouwing.nl/2013/04/creating-custom-unit-test-generator.html

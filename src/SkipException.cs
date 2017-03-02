@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XUnit.OptionallyIgnore.SpecFlowPlugin
+namespace Xunit.SpecFlow.AssertSkip
 {
     internal class SkipException : Exception
     {

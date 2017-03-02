@@ -1,6 +1,4 @@
-﻿using XUnit.OptionallyIgnore.SpecFlowPlugin;
-
-namespace XUnit.OptionallyIgnore.Tester
+﻿namespace Xunit.SpecFlow.AssertSkip.Tester
 {
     public class SampleIgnoreTest
     {

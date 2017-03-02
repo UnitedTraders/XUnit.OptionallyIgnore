@@ -1,7 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.UnitTestProvider;
 
-namespace XUnit.OptionallyIgnore.SpecFlowPlugin
+namespace Xunit.SpecFlow.AssertSkip
 {
     public class CustomXUnitTestRuntimeProvider : IUnitTestRuntimeProvider
     {

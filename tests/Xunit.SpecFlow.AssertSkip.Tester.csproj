@@ -7,7 +7,7 @@
     <ProjectGuid>{183D0B15-B14B-44D8-A9A6-15C9BF1343BD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XUnit.OptionallyIgnore.Tester</RootNamespace>
+    <RootNamespace>Xunit.SpecFlow.AssertSkip.Tester</RootNamespace>
     <AssemblyName>XUnit.OptionallyIgnore.Tester</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -85,9 +85,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\XUnit.OptionallyIgnore.csproj">
+    <ProjectReference Include="..\src\Xunit.SpecFlow.AssertSkip.csproj">
       <Project>{ab6e878c-7d19-498c-bd01-9dfcba5f842d}</Project>
-      <Name>XUnit.OptionallyIgnore</Name>
+      <Name>Xunit.SpecFlow.AssertSkip</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

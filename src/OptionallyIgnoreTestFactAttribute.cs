@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Xunit;
 using Xunit.Sdk;
 
-namespace XUnit.OptionallyIgnore.SpecFlowPlugin
+namespace Xunit.SpecFlow.AssertSkip
 {
     public class OptionallyIgnoreTestFactAttribute : FactAttribute
     {

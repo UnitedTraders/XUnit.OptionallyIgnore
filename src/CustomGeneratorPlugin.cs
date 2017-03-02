@@ -6,7 +6,7 @@ using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.UnitTestProvider;
 
-namespace XUnit.OptionallyIgnore.SpecFlowPlugin
+namespace Xunit.SpecFlow.AssertSkip
 {
     public class CustomGeneratorPlugin : IGeneratorPlugin, IRuntimePlugin
     {
