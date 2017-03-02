@@ -3,6 +3,9 @@ using Xunit.Sdk;
 
 namespace Xunit.SpecFlow.AssertSkip
 {
+    /// <summary>
+    /// Facts that contains <see cref="AssertExtension.Skip"/> must have this attribute
+    /// </summary>
     public class OptionallyIgnoreTestFactAttribute : FactAttribute
     {
         protected override IEnumerable<ITestCommand> EnumerateTestCommands(IMethodInfo method)
