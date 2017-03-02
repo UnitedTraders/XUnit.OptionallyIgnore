@@ -9,6 +9,6 @@ namespace XUnit.OptionallyIgnore.SpecFlowPlugin
             Reason = reason;
         }
 
-        public string Reason { get; set; }
+        public string Reason { get; }
     }
 }
